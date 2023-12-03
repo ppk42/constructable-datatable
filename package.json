@@ -1,0 +1,32 @@
+{
+  "name": "constructable-table",
+  "version": "0.1.0",
+  "description": "A highly configurable data table. With data sources, layouts, cell types, styling, widgets, filter, pagination, sorter and grouping.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ppk42/constructable-data-table.git"
+  },
+  "keywords": [
+    "highly configurable",
+    "data table",
+    "filtering",
+    "sorting",
+    "pagination",
+    "grouping",
+    "styling",
+    "widgets"
+  ],
+  "author": "Peter Paul Kiefer <dafisppk@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ppk42/constructable-data-table/issues"
+  },
+  "homepage": "https://github.com/ppk42/constructable-data-table#readme",
+  "devDependencies": {
+    "generate-template-files": "^3.2.1"
+  }
+}
