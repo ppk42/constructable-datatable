@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest tests",
     "build": "babel src -d lib",
-    "docs": "jsdoc src -r -R ./README.md -d docs/ 2>/dev/null"
+    "docs": "mkdir -p lib/docs && jsdoc src -r -R ./README.md -d lib/docs/ 2>/dev/null"
   },
   "repository": {
     "type": "git",
