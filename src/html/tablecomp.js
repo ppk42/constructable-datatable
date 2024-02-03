@@ -1,6 +1,0 @@
-
-
-class ContructableTable extends HtmlElement 
-{
-
-}

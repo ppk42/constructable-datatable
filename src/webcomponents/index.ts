@@ -1,0 +1,4 @@
+class ContructableTable extends HTMLElement 
+{
+
+}
