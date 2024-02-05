@@ -13,7 +13,7 @@ class AbstractArea {
 /**
 * @class
 */
-class DetailArea extends AbstractArea {
+class DisplayArea extends AbstractArea {
   constructor(id: string) {
     super(id)
   }
@@ -22,7 +22,7 @@ class DetailArea extends AbstractArea {
 /**
 * @class
 */
-class CubeGridArea extends AbstractArea {
+class StackArea extends AbstractArea {
   constructor(id: string) {
     super(id)
   }
@@ -55,4 +55,4 @@ class KeyArea extends AbstractArea {
   }
 }
 
-export {KeyArea, ListArea, GridArea, CubeGridArea, DetailArea};
+export {KeyArea, ListArea, GridArea, StackArea, DisplayArea};

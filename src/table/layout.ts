@@ -38,16 +38,6 @@ class AreaPanel extends AbstractPanel {
 /**
 * @class
 */
-class TableLayout {
-  id: string;
-  constructor(id: string) {
-    this.id = id;
-  }
-}
-
-/**
-* @class
-*/
 class ConstructableTable {
   id: string;
   constructor(id: string) {
