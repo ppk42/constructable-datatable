@@ -4,6 +4,9 @@
 > cell types, cell zoom, cell editor, styling, widgets, filter, 
 > pagination, sorter and grouping.
 
+## Intro
+
+
 ## Use Cases
 
 - display tabular data
@@ -16,5 +19,7 @@
 
 ## Getting started
 
-## Tooling
 
+## License
+
+[MIT](LICENSE)
