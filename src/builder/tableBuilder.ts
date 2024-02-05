@@ -7,3 +7,5 @@ class TableBuilder {
     this.name = name;
   }
 }
+
+export { TableBuilder };
