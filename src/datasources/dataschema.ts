@@ -1,24 +1,36 @@
 type FieldDataType = string | number | Date | boolean | {};
 
-/**
- * @class
- */
-class Field<T extends FieldDataType> {
-  name: string;
+class FieldBase {
+  _name: string;
   constructor(name: string) {
-    this.name = name;
+    this._name = name;
   }
 
-  extractValue(record: { [key: string]: FieldDataType }): T | undefined ;
+  get name(): string {
+    return this._name;
+  }
+}
 
-/**
- * @class
- */
-class TextField extends Field<string> {
+interface Field<T extends FieldDataType> {
+  extractValue(record: { [key: string]: FieldDataType }): T | undefined;
+  get name(): string;
+}
+
+class TextField extends FieldBase implements Field<string> {
   value: string;
+
   constructor(name: string, value: string) {
-    super(name, "string");
+    super(name);
     this.value = value;
+  }
+
+  extractValue(record: { [key: string]: FieldDataType }): string | undefined {
+    const value = record[this.name];
+    if (typeof value === "string") {
+      return value;
+    }
+    // TODO: implement converter
+    return undefined;
   }
 }
 
