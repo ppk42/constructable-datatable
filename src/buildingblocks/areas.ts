@@ -55,4 +55,4 @@ class KeyArea extends AbstractArea {
   }
 }
 
-export {KeyArea, ListArea, GridArea, StackArea, DisplayArea};
+export {AbstractArea, KeyArea, ListArea, GridArea, StackArea, DisplayArea};

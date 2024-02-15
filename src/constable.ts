@@ -1,14 +1,12 @@
-import {
-  ConfigPanelController,
-  LegendPanelController,
-} from "./controller/overlay_contoller";
-import { TableBuilder } from "./builder/tableBuilder";
-import { GridArea } from "./components/area";
+import { ConstructableTable } from "./buildingblocks/table";
+import { DataSource } from "./datasources/datasource";
 
-export {
-  //
-  ConfigPanelController,
-  LegendPanelController,
-  TableBuilder,
-  GridArea,
-};
+/**
+ * @function
+ */
+function createTable(id: string): ConstructableTable {
+  const table = new ConstructableTable(id);
+  return table;
+}
+
+export { createTable };

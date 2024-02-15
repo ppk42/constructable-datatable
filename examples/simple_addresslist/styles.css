@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  font-size: 1.2em;
+}
+header {
+  width: 70%;
+  margin: 4em;
+}
+.table-container {
+  width: 70%;
+  margin: 4em;
+}
+
