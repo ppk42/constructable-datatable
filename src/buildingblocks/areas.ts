@@ -1,58 +1,45 @@
-"use strict";
+/** @module buildingblocks/areas */
 
-/**
-* @class
-*/
-class AbstractArea {
+export abstract class Area {
   id: String;
   constructor(id: string) {
     this.id = id;
   }
 }
 
-/**
-* @class
-*/
-class DisplayArea extends AbstractArea {
+export class GridArea extends Area {
   constructor(id: string) {
     super(id)
   }
 }
 
-/**
-* @class
-*/
-class StackArea extends AbstractArea {
+export class ListArea extends Area {
   constructor(id: string) {
     super(id)
   }
 }
 
-/**
-* @class
-*/
-class GridArea extends AbstractArea {
+export class KeyArea extends Area {
   constructor(id: string) {
     super(id)
   }
 }
 
-/**
-* @class
-*/
-class ListArea extends AbstractArea {
+export class TitleArea extends Area {
   constructor(id: string) {
     super(id)
   }
 }
 
-/**
-* @class
-*/
-class KeyArea extends AbstractArea {
+export class DisplayArea extends Area {
   constructor(id: string) {
     super(id)
   }
 }
 
-export {AbstractArea, KeyArea, ListArea, GridArea, StackArea, DisplayArea};
+export class ControlArea extends Area {
+  constructor(id: string) {
+    super(id)
+  }
+}
+

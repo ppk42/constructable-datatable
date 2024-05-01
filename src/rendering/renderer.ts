@@ -1,20 +1,28 @@
-import { AbstractLayout } from "../buildingblocks/layouts";
+/** @module rendering/renderer */
+
+import { TableLayout } from "../buildingblocks/layouts";
 import { ConstructableTable } from "../buildingblocks/table";
+import { GridArea, KeyArea, ListArea } from "../buildingblocks/areas";
 
-/**
- */
-interface Renderer {
-  id: string;
+export type TableRenderFunction = {
+  (table: ConstructableTable, layout: HTMLDivElement): HTMLElement;
+};
 
-  renderTableFrame: (
-    table: ConstructableTable,
-    layout: AbstractLayout,
-  ) => string;
+export type LayoutRenderFunction = {
+  (
+    layout: TableLayout,
+    areas: { [id: string]: HTMLDivElement },
+  ): HTMLDivElement;
+};
 
-  renderTableCell: (
-    table: ConstructableTable,
-    cell: AbstractCellType<any>,
-  ) => string;
-}
+export type GridAreaRenderFunction = {
+  (area: GridArea, cells: HTMLElement[]): HTMLElement;
+};
 
-export { Renderer };
+export type ListAreaRenderFunction = {
+  (area: ListArea, cells: HTMLElement[]): HTMLElement;
+};
+
+export type KeyAreaRenderFunction = {
+  (area: KeyArea, cells: HTMLElement[]): HTMLElement;
+};

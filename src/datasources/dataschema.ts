@@ -1,26 +1,32 @@
 type FieldDataType = string | number | Date | boolean | {};
+type FieldDataTypeNames = "string" | "number" | "Date" | "boolean" | "object";
 
-class FieldBase {
+abstract class Field<T extends FieldDataType> {
   _name: string;
-  _typeString: string;
-  constructor(name: string, typeString: string) {
+  _typeString: FieldDataTypeNames;
+
+  constructor(name: string, typeString: FieldDataTypeNames) {
     this._name = name;
     this._typeString = typeString;
   }
+  
   get name(): string {
     return this._name;
   }
-}
 
-interface Field<T extends FieldDataType> {
-  extractValue(record: { [key: string]: FieldDataType }): T;
-  get name(): string;
-}
-
-class TextField extends FieldBase implements Field<string> {
-  constructor(name: string) {
-    super(name, "text");
+  get typeString(): string {
+    return this._typeString;
   }
+
+  abstract extractValue(record: { [key: string]: FieldDataType }): T;
+}
+
+class TextField extends Field<string> {
+
+  constructor(name: string) {
+    super(name, "string");
+  }
+  
   extractValue(record: { [key: string]: FieldDataType }): string {
     const value = record[this.name];
     if (typeof value === "string") {
@@ -31,12 +37,15 @@ class TextField extends FieldBase implements Field<string> {
       `type of record element ${this.name} (type = ${typeof value}) is not a string.`,
     );
   }
+
 }
 
-class NumberField extends FieldBase implements Field<number> {
+class NumberField extends Field<number> {
+
   constructor(name: string) {
     super(name, "number");
   }
+  
   extractValue(record: { [key: string]: FieldDataType }): number {
     const value = record[this.name];
     if (typeof value === "number") {
@@ -49,10 +58,12 @@ class NumberField extends FieldBase implements Field<number> {
   }
 }
 
-class BooleanField extends FieldBase implements Field<boolean> {
+class BooleanField extends Field<boolean> {
+
   constructor(name: string) {
-    super(name, "bool");
+    super(name, "boolean");
   }
+  
   extractValue(record: { [key: string]: FieldDataType }): boolean {
     const value = record[this.name];
     if (typeof value === "boolean") {
@@ -65,10 +76,12 @@ class BooleanField extends FieldBase implements Field<boolean> {
   }
 }
 
-class DateField extends FieldBase implements Field<Date> {
+class DateField extends Field<Date> {
+  
   constructor(name: string) {
-    super(name, "date");
+    super(name, "Date");
   }
+  
   extractValue(record: { [key: string]: FieldDataType }): Date {
     const value = record[this.name];
     if (value instanceof Date) {
@@ -90,29 +103,10 @@ class DataRecord {
     this.fields = {};
   }
 
-  addTextField(name: string): TextField {
-    const field = new TextField(name);
-    this.fields[name] = field;
-    return field;
-  }
-
-  addNumberField(name: string): NumberField {
-    const field = new NumberField(name);
-    this.fields[name] = field;
-    return field;
-  }
-
-  addBooleanField(name: string): BooleanField {
-    const field = new BooleanField(name);
-    this.fields[name] = field;
-    return field;
-  }
-
-  addDateField(name: string): DateField {
-    const field = new DateField(name);
+  addField<FT extends Field<FieldDataType>>(name: string, field: FT): FT {
     this.fields[name] = field;
     return field;
   }
 }
 
-export { DataRecord };
+export { DataRecord, Field, TextField, NumberField, BooleanField, DateField };
